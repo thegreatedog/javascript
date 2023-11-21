@@ -68,7 +68,8 @@ app.post('/getAllAccs', async (req, res) => {
 
       res.send(accountsArray);
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
   } else {
     res.status(401).json({ error: 'Wrong login or password' });
