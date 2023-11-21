@@ -299,6 +299,6 @@ app.post('/removeAccFromBase', async (req, res) => {
   }
 });
 
-// app.listen(YOUR_SERVER_PORT, () => {
-//   console.log(`Your server is listening on port ${YOUR_SERVER_PORT}`);
-// });
+app.listen(YOUR_SERVER_PORT, () => {
+  console.log(`Your server is listening on port ${YOUR_SERVER_PORT}`);
+});
