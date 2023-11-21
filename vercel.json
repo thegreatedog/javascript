@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "builds": [{ "src": "index.js", "use": "@vercel/node" }],
+  "routes": [
+    { "src": "/getAllAccs", "dest": "index.js" },
+    { "src": "/sendRequest", "dest": "index.js" },
+    { "src": "/startWork", "dest": "index.js" },
+    { "src": "/sendAnswer", "dest": "index.js" },
+    { "src": "/getBoost", "dest": "index.js" },
+    { "src": "/buyBoost", "dest": "index.js" },
+    { "src": "/addAccToBase", "dest": "index.js" },
+    { "src": "/removeAccFromBase", "dest": "index.js" },
+    { "handle": "vercel", "src": "/.*" }
+  ]
+}
