@@ -9,7 +9,6 @@
     { "src": "/getBoost", "dest": "index.js" },
     { "src": "/buyBoost", "dest": "index.js" },
     { "src": "/addAccToBase", "dest": "index.js" },
-    { "src": "/removeAccFromBase", "dest": "index.js" },
-    { "handle": "vercel", "src": "/.*" }
+    { "src": "/removeAccFromBase", "dest": "index.js" }
   ]
 }
