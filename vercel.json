@@ -1,6 +1,7 @@
 {
   "version": 2,
   "builds": [{ "src": "index.js", "use": "@vercel/node" }],
+  "regions": ["europe"],
   "routes": [
     { "src": "/getAllAccs", "dest": "index.js" },
     { "src": "/sendRequest", "dest": "index.js" },
