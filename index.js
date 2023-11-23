@@ -5,12 +5,13 @@ const sendRequestFunction = require('./server-modules/getWorkGetRequest');
 
 const YOUR_SERVER_PORT = 4000;
 const app = express();
-
-app.use(
-  cors({
-    origin: 'http://188.190.63.226:5500',
-  })
-);
+app.use(cors());
+app.options('*', cors());
+// app.use(
+//   cors({
+//     origin: 'http://188.190.63.226:5500',
+//   })
+// );
 app.use(express.json());
 
 const cheerioParser = (response, element, className, attribute) => {
