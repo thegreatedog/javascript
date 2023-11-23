@@ -27,52 +27,80 @@ const cheerioParser = (response, element, className, attribute) => {
   };
 };
 
-const users = [
-  {
-    login: 'thegreatedog',
-    password: '321915',
-  },
-  {
-    login: 'jeka',
-    password: 'Evgeniu10',
-  },
-  {
-    login: 'Uziy',
-    password: 'vfntvfnbrf',
-  },
-];
+// const users = [
+//   {
+//     login: 'thegreatedog',
+//     password: '321915',
+//   },
+//   {
+//     login: 'jeka',
+//     password: 'Evgeniu10',
+//   },
+//   {
+//     login: 'Uziy',
+//     password: 'vfntvfnbrf',
+//   },
+// ];
+
+// app.post('/getAllAccs', async (req, res) => {
+//   const { login, password } = req.body;
+//   console.log(req.body);
+//   const user = users.find(
+//     (user) => user.login === login && user.password === password
+//   );
+//   if (user) {
+//     try {
+//       const response = await fetch(
+//         'https://react-course-http-6ee84-default-rtdb.firebaseio.com/work.json',
+//         {
+//           method: 'GET',
+//         }
+//       );
+//       const responseData = await response.json();
+
+//       const accountsArray = Object.values(responseData)
+//         .map((account) => ({
+//           accountName: account.accountName,
+//           password: account.password,
+//           owner: account.owner,
+//         }))
+//         .filter((account) => account.owner === login);
+
+//       res.send(accountsArray);
+//     } catch (error) {
+//       console.error(error);
+//       res.status(500).json({ error: 'Internal Server Error' });
+//     }
+//   } else {
+//     res.status(401).json({ error: 'Wrong login or password' });
+//   }
+// });
 
 app.post('/getAllAccs', async (req, res) => {
-  const { login, password } = req.body;
+  const login = req.body.login;
   console.log(req.body);
-  const user = users.find(
-    (user) => user.login === login && user.password === password
-  );
-  if (user) {
-    try {
-      const response = await fetch(
-        'https://react-course-http-6ee84-default-rtdb.firebaseio.com/work.json',
-        {
-          method: 'GET',
-        }
-      );
-      const responseData = await response.json();
 
-      const accountsArray = Object.values(responseData)
-        .map((account) => ({
-          accountName: account.accountName,
-          password: account.password,
-          owner: account.owner,
-        }))
-        .filter((account) => account.owner === login);
+  try {
+    const response = await fetch(
+      'https://react-course-http-6ee84-default-rtdb.firebaseio.com/work.json',
+      {
+        method: 'GET',
+      }
+    );
+    const responseData = await response.json();
 
-      res.send(accountsArray);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  } else {
-    res.status(401).json({ error: 'Wrong login or password' });
+    const accountsArray = Object.values(responseData)
+      .map((account) => ({
+        accountName: account.accountName,
+        password: account.password,
+        owner: account.owner,
+      }))
+      .filter((account) => account.owner === login);
+
+    res.send(accountsArray);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
 
